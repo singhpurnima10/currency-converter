@@ -27,13 +27,14 @@ class App extends React.Component {
   state={
     inputValue: 1,
     outputValue: 1.5601,
-    numericValue: 1.5601
+    numericValue: 1.5601,
+    currencyText: 'Canadian Dollar'
   }
   componentDidMount(props) {
     this.props.getCurrencyData();
   }
   handleChange=(e)=>{
-    this.setState({outputValue: this.state.inputValue * e.target.value, numericValue: e.target.value});
+    this.setState({outputValue: this.state.inputValue * e.target.value, numericValue: e.target.value, currencyText: e.target.options[e.target.selectedIndex].text});
   }
   handleUserInput=(e)=> {
     const re = /^[0-9\b]+$/;
@@ -58,7 +59,7 @@ class App extends React.Component {
       <MainContainer>
         <Header>Currency converter Application</Header>
           <SubHeader>Rates as per date {da} {mo} {ye} </SubHeader>
-          
+    <CurrencyText>{this.state.inputValue} Euro equals {this.state.outputValue} {this.state.currencyText}</CurrencyText>
            <InputContainer><Currency type='tel' value={this.state.inputValue} onChange={this.handleUserInput} /> <CurrencyText>EURO</CurrencyText> </InputContainer>
            
            <OutputContainer>
