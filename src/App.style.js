@@ -1,4 +1,13 @@
 import styled from "styled-components";
+import bcg from './curr-conv1.jpg';
+
+export const Main = styled.div`
+background-image:url(${bcg});
+background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+`;
 
 export const MainContainer = styled.div`
   padding: 40px;
@@ -7,11 +16,9 @@ export const MainContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  border: 1px solid grey;
-border-radius: 5px;
-padding: 20px;
+  
+padding-top:100px;
 width: 90%;
-margin 40px;
 `;
 
 export const Currency = styled.input`
@@ -21,10 +28,9 @@ width: 150px;
     font-family: Roboto,HelveticaNeue,Arial,sans-serif;
     font-weight: normal !important;
     font-size: 16px !important;
-    background: transparent;
+    background-color: #fff;
     border-radius: 6px;
     border: 1px solid #DFE1E5;
-    color: #70757A!important;
     font-size: 14px !important;
     height: 36px;
     padding: 0 12px 0 12px;
@@ -53,7 +59,7 @@ export const Dropdown = styled.select`
     text-align: left;
     text-decoration: none;
     vertical-align: middle;
-    width: 100px;
+    width: 105px;
     background-color: #fff;
     color: #202124!important;
     height: 36px;

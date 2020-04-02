@@ -7,6 +7,7 @@ import { getDataAsync } from "./redux/action";
 import { render } from "react-dom";
 import * as _ from "lodash";
 import {
+  Main,
   Currency,
   MainContainer,
   InputContainer,
@@ -16,6 +17,7 @@ import {
   DropdownWrapper,
   CurrencyText
 } from "./App.style";
+
 
 class App extends React.Component {
   state={
@@ -34,13 +36,16 @@ class App extends React.Component {
       this.setState({outputValue: this.state.inputValue * this.state.numericValue})
     });
   }
+
   render() {
     const { currencyData } = this.props;
-    
-
+    const d = currencyData.date && (new Date(currencyData.date.toString()));
+  const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' }); 
+  const [{ value: mo },,{ value: da },,{ value: ye }] = dtf.formatToParts(d); 
     return (
+      <Main>
       <MainContainer>
-        <Header>Currency converter rates as per date {currencyData.date} </Header>
+        <Header>Currency converter rates as per date {da} {mo} {ye} </Header>
            <InputContainer><Currency type='tel' value={this.state.inputValue} onChange={this.handleUserInput} /> <CurrencyText>EUR</CurrencyText> </InputContainer>
            
            <OutputContainer>
@@ -57,6 +62,7 @@ class App extends React.Component {
            </OutputContainer>
            
       </MainContainer>
+      </Main>
     );
   }
 }
