@@ -58,7 +58,7 @@ class App extends React.Component {
       <MainContainer>
         <Header>Currency converter Application</Header>
           <SubHeader>Rates as per date {da} {mo} {ye} </SubHeader>
-          <CurrencyText>1 Euro equals 1.5601 Canadian Dollar</CurrencyText>
+          
            <InputContainer><Currency type='tel' value={this.state.inputValue} onChange={this.handleUserInput} /> <CurrencyText>EURO</CurrencyText> </InputContainer>
            
            <OutputContainer>
