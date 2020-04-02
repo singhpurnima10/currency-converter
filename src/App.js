@@ -6,6 +6,9 @@ import "./App.css";
 import { getDataAsync } from "./redux/action";
 import { render } from "react-dom";
 import * as _ from "lodash";
+// import  from "./data"
+import {CurrencyKeyData} from './data';
+
 import {
   Main,
   Currency,
@@ -15,7 +18,8 @@ import {
   Header,
   Dropdown,
   DropdownWrapper,
-  CurrencyText
+  CurrencyText,
+  SubHeader
 } from "./App.style";
 
 
@@ -32,9 +36,16 @@ class App extends React.Component {
     this.setState({outputValue: this.state.inputValue * e.target.value, numericValue: e.target.value});
   }
   handleUserInput=(e)=> {
-    this.setState({inputValue : e.target.value},() => {
-      this.setState({outputValue: this.state.inputValue * this.state.numericValue})
-    });
+    const re = /^[0-9\b]+$/;
+
+    // if value is not blank, then test the regex
+
+    if (e.target.value === '' || re.test(e.target.value)){
+      this.setState({inputValue : e.target.value},() => {
+        this.setState({outputValue: this.state.inputValue * this.state.numericValue})
+      });
+    }
+    
   }
 
   render() {
@@ -45,15 +56,17 @@ class App extends React.Component {
     return (
       <Main>
       <MainContainer>
-        <Header>Currency converter rates as per date {da} {mo} {ye} </Header>
-           <InputContainer><Currency type='tel' value={this.state.inputValue} onChange={this.handleUserInput} /> <CurrencyText>EUR</CurrencyText> </InputContainer>
+        <Header>Currency converter Application</Header>
+          <SubHeader>Rates as per date {da} {mo} {ye} </SubHeader>
+          <CurrencyText>1 Euro equals 1.5601 Canadian Dollar</CurrencyText>
+           <InputContainer><Currency type='tel' value={this.state.inputValue} onChange={this.handleUserInput} /> <CurrencyText>EURO</CurrencyText> </InputContainer>
            
            <OutputContainer>
-           <Currency type='tel' value={this.state.outputValue} />
+           <Currency type='text' value={this.state.outputValue} />
            <DropdownWrapper>
            <Dropdown onChange={(event)=>this.handleChange(event)}>
            {_.map(currencyData.rates,(data, key) => 
-             <option value={data}>{key}</option>
+             <option value={data}>{CurrencyKeyData[key]}</option> 
            )}
            </Dropdown>
            </DropdownWrapper>

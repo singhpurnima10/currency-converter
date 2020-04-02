@@ -36,7 +36,15 @@ width: 150px;
     padding: 0 12px 0 12px;
 `;
 
-export const Header = styled.h1`
+export const Header = styled.div`
+margin-bottom:15px;
+font-size:64px;
+`;
+
+export const SubHeader = styled.div`
+font-size:24px;
+margin-top:0;
+font-weight: bold;
 `;
 
 export const InputContainer = styled.div`
@@ -59,7 +67,7 @@ export const Dropdown = styled.select`
     text-align: left;
     text-decoration: none;
     vertical-align: middle;
-    width: 105px;
+    width: 120px;
     background-color: #fff;
     color: #202124!important;
     height: 36px;
@@ -72,8 +80,9 @@ border-radius: 6px;
     border: 1px solid #DFE1E5;
     overflow: hidden;
     position: relative;
-    width: 105px;
+    width: 120px;
 `;
 
 export const CurrencyText = styled.h2`
+color: white;
 display: inline-block;`;
